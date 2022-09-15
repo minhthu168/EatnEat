@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="fpt.aptech_EatnEat_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+    <class>fpt.aptech.EatnEat.entities.Employee</class>
+    <class>fpt.aptech.EatnEat.entities.Receipe</class>
+    <class>fpt.aptech.EatnEat.entities.Food</class>
+   
+    <class>fpt.aptech.EatnEat.entities.Menutype</class>
+    <class>fpt.aptech.EatnEat.entities.Orderdetail</class>
+    <class>fpt.aptech.EatnEat.entities.Ingredient</class>
+    <class>fpt.aptech.EatnEat.entities.Orders</class>
+    
+    <class>fpt.aptech.EatnEat.entities.Viewfood</class>
+   
+    <class>fpt.aptech.EatnEat.entities.Favorite</class>
+    <class>fpt.aptech.EatnEat.entities.Viewemployee</class>
+    <class>fpt.aptech.EatnEat.entities.Vieworders</class>
+    <class>fpt.aptech.EatnEat.entities.Vieworderdetail</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=EatnEatDB"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="123"/>
+    </properties>
+  </persistence-unit>
+</persistence>

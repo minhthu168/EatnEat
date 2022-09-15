@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    class="light-style layout-menu-fixed"
+    dir="ltr"
+    data-theme="theme-default"
+    data-assets-path="../assets/"
+    data-template="vertical-menu-template-free" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="admin/admin_layout/head_aside::admin_head"></head>
+    <body>
+        <!-- Layout wrapper -->
+        <div class="layout-wrapper layout-content-navbar">
+            <div class="layout-container">
+                <!-- Menu -->
+
+                <aside th:replace="admin/admin_layout/head_aside::admin_aside"></aside>
+                <!-- / Menu -->
+
+                <!-- Layout container -->
+                <div class="layout-page">
+                    <!-- Navbar -->
+
+                    <nav th:replace="admin/admin_layout/nav_footer::admin_nav"></nav>
+
+                    <!-- / Navbar -->
+
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                        <!-- Content -->
+
+                        <!-- Content -->
+
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            <h2 class="fw-bold py-3 mb-4 text-center"><span class="text-muted fw-light">Food List</span></h4> 
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5><a th:href="@{/admin/doCreateFood}" class="btn btn-primary">Add new</a>
+                                </div>
+                                <div class="col-md-8" th:align="right">
+                                    <form th:action="@{/admin-searchFood}" method="get">
+                                        <table>
+                                            <tr>
+                                                <td><input type="text" name="foodname" class="form-control"/></td>
+                                                <td> <input type="submit" class="btn btn-info" value="Search"/></td>
+                                            </tr>
+                                        </table>
+                                          
+                                       
+                                </form>
+                                </div>
+                           
+                            </div>
+                            
+                            <div class="card">               
+                                
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table">
+                                        <thead>                
+                                            <tr> 		
+                                                <th>Food ID</th>                                                
+                                                <th>Image</th>                                                
+                                                <th>Food Name</th>
+                                                <th>Price</th>                                                
+                                                <th>Ingredient for Food</th>
+                                                <th>Action</th>
+                                            </tr>               
+                                        </thead>
+                                        <tbody class="table-border-bottom-0">
+                                            <tr th:each="f: ${listFood}">
+                                                <td th:text="${f.foodid}"></td>
+                                                <td><img th:src="@{${f.getImagePath()}}" style="width: 100px"/></td>
+                                                <td th:text="${f.foodname}"></td>                                               
+                                                <td th:text="${f.getPriceFormat()}"></td>                                                	  
+                                                <td><a th:href="@{/admin-ingredientforfood/} + ${f.getFoodid()}">View</a></td>
+                                                <td><a class="btn btn-warning" th:href="@{/deleteFood/{id}(id=${f.getFoodid()})}">Delete</a>
+                                                <a class="btn btn-info" th:href="@{../editFood/}+${f.getFoodid()}">Edit</a>
+                                                </td>
+                                            </tr>                 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>                          
+                            <!--/ Horizontal -->
+                            <!--/ Card layout -->
+                        </div>
+                        <!-- / Content -->
+
+                        <!-- Footer -->
+                       <footer th:replace="admin/admin_layout/nav_footer::admin_footer"></footer>
+                        <!-- / Footer -->
+
+                        <div class="content-backdrop fade"></div>
+                    </div>
+                    <!-- Content wrapper -->
+                </div>
+                <!-- / Layout page -->
+            </div>
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+        </div>
+        <!-- / Layout wrapper -->
+
+                <div th:replace="admin/admin_layout/script::script"></div>
+
+    </body>
+</html>

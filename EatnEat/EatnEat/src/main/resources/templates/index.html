@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="layout/head_header::head"></head>
+
+    <body>
+        <header th:replace="layout/head_header::header"></header>
+
+        <!-- banner part start-->
+        <section class="banner_part">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="banner_text">
+                            <div class="banner_text_iner">
+                                <h5>Good morning !</h5>
+                                <h1>Order food online and get it hot right at your company</h1>
+                                <p>Let's discover delicious food together.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- banner part start-->
+
+        <!--::exclusive_item_part start::-->
+        <section class="exclusive_item_part blog_item_section">
+            <div class="container" style="padding-bottom: 7%;">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <div class="section_tittle">                       
+                            <h2>There's something for everyone!</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="single_blog_item">
+                            <div class="single_blog_img">
+                                <img src="../template/img/food_item/item1.PNG" alt="">
+                            </div>
+                            <div class="single_blog_text">
+                                <h3>Office meal</h3>
+                                <p>“Good meal, Good life”,Eat&Eat will help you always maintain the inspiration of “good food” through each meal.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="single_blog_item">
+                            <div class="single_blog_img">
+                                <img src="../template/img/food_item/item2.PNG" alt="">
+                            </div>
+                            <div class="single_blog_text">
+                                <h3>Corporate meal</h3>
+                                <p>Delicious meals can also meet large quantities with its own menu. Rich dessert topping</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="single_blog_item">
+                            <div class="single_blog_img">
+                                <img src="../template/img/food_item/item3.PNG" alt="">
+                            </div>
+                            <div class="single_blog_text">
+                                <h3>Optimizing the menu </h3>
+                                <p>Menu that is scientifically built according to the budget, for a complete and quality portion</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--::exclusive_item_part end::-->
+        <!-- food_menu start-->
+        <section class="food_menu gray_bg">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="section_tittle">                      
+                            <h2>Food Menu</h2>
+                        </div>
+                    </div>
+                   
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active single-member" id="Special" role="tabpanel"
+                                 aria-labelledby="Special-tab">
+                                 <div class="row">
+                                <div class="col-sm-6 col-lg-6"  th:each="e:${LIST}">
+                                    <div class="single_food_item media">                                       
+                                        <img th:src="@{${e.getImagePath}}" class="mr-3" alt="..." width="200">
+                                        <div class="media-body align-self-center">
+                                            <h3 th:text="${e.getFoodname()}"></h3>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <h5 ><span th:text="${e.getPrice()}"></span>VND</h5>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${message}">
+                                                    <h3 style="color: red" th:text="${message}"></h3>              
+                                                    </div>
+                                                    <a th:href="@{/favor/add/{foodid}(foodid=${e.getFoodid()})}"><i class='fas fa-heart' style='font-size:36px;color:orangered'></i></a>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;                                                
+                                                    <a th:href="@{/cart/add/{foodid}(foodid=${e.getFoodid()})}"><i class="fa fa-shopping-cart" style="font-size:36px;color:green"></i></a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>                                    
+                                </div>                                
+                            </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- food_menu part end-->
+
+        <!-- footer part start-->
+        <footer th:replace="layout/footer_script::footer"/>
+        <!-- footer part end-->
+        <div th:replace="layout/footer_script::script"/>
+
+
+    </body>
+
+</html>

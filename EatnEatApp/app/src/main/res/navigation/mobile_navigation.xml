@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="fpt.aptech.eatneatapp.ui.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_daily_meal"
+        android:name="fpt.aptech.eatneatapp.ui.DailyMealFragment"
+        android:label="Daily Meal"
+        tools:layout="@layout/fragment_daily_meal" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="fpt.aptech.eatneatapp.ui.CartFragment"
+        android:label="cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="fpt.aptech.eatneatapp.ui.OrderFragment"
+        android:label="Order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/nav_sign_out"
+        android:name="fpt.aptech.eatneatapp.ui.LogoutFragment"
+        android:label="Order"
+        tools:layout="@layout/fragment_logout" />
+
+</navigation>

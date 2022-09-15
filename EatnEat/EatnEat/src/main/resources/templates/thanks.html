@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/head_header::head"></head>
+    <body>
+        <header th:replace="layout/head_header::header"></header>
+        <br/><br/><br/><br/>
+        <!-- breadcrumb start-->
+        <!-- breadcrumb start-->
+        <section class="breadcrumb breadcrumb_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb_iner text-center">
+                            <div class="breadcrumb_iner_item">
+                                <h2>Thanks for your order!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container-xxl flex-grow-1 container-p-y">
+                                                           
+                        <div class="card col-md-6 offset-3">   
+                             <h2 class="fw-bold py-3 mb-4 text-center text-white"><span class="text-muted fw-light">Order Detail</span></h4>   
+                             <br/>
+                            <div style="margin: 10px; padding-left: 5%;">
+                                <p><b>Employee Name: </b><span th:text="${order.getEmpid().getEmpname()}"></span> </p>
+                                <p><b>Employee Code: </b><span th:text="${order.getEmpid().getEmpid()}"></span> </p>
+                                <p><b>Order ID: </b><span th:text="${order.getOrderid()}"></span> </p>
+                                <p><b>OrderDate: </b><span th:text="${order.getOrderdate()}"></span></p>
+                            </div>
+                            <hr/>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+
+                                    <tr>                                                                                              
+                                        <th>Food Name</th> 
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total Amount</th>
+
+                                    </tr>                                                                                 
+
+                                    <tr th:each="e:${detail}">                                                                                               
+                                        <td th:text="${e.getFoodid().getFoodname()}"></td>
+                                        <td th:text="${e.getFoodid().getPriceFormat()}"></td>    
+                                        <td th:text="${e.getQuantity()}"></td>  
+                                        <td th:text="${e.getPriceFormat()}"></td>  
+
+                                    </tr>                 
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td colspan="2"><b>Total :</b><span th:text="${order.getPriceFormat()}"></span> VND</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                        </div>
+                    <br/><br/>
+                        <!--/ Horizontal -->
+                        <!--/ Card layout -->
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- footer part start-->
+        <footer th:replace="layout/footer_script::footer"/>
+        <!-- footer part end-->
+        <div th:replace="layout/footer_script::script"/>
+    </body>
+
+</html>

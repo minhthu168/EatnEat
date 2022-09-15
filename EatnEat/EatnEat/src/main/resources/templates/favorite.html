@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/head_header::head"></head>
+    <body>
+        <header th:replace="layout/head_header::header"></header>
+        <br><br><br><br>
+        <style>
+            @media (min-width: 1025px) {
+                .h-custom {
+                    height: 100vh !important;
+                }
+            }
+
+            .card-registration .select-input.form-control[readonly]:not([disabled]) {
+                font-size: 1rem;
+                line-height: 2.15;
+                padding-left: .75em;
+                padding-right: .75em;
+            }
+
+            .card-registration .select-arrow {
+                top: 13px;
+            }
+
+            .bg-grey {
+                background-color: #eae8e8;
+            }
+
+            @media (min-width: 992px) {
+                .card-registration-2 .bg-grey {
+                    border-top-right-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                }
+            }
+
+            @media (max-width: 991px) {
+                .card-registration-2 .bg-grey {
+                    border-bottom-left-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                }
+            }
+        </style>
+        
+        <section class="breadcrumb breadcrumb_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb_iner text-center">
+                            <div class="breadcrumb_iner_item">
+                                <h2>My Favorites</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="container py-5">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="card card-registration card-registration-2" style="border-radius: 15px;">                          
+                            <div class="card-body p-0">
+                                <div class="row g-0">                                 
+                                    <div class="col-lg-12">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${message}">
+                                                    <h3 style="color: red" th:text="${message}"></h3>              
+                                                </div>
+                                        <div class="p-5">
+                                            <div class="d-flex justify-content-between align-items-center mb-5 bg-grey">
+                                                <h1 class="fw-bold mb-0 text-black">You wanna order now?</h1>                                                
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="row mb-4 d-flex justify-content-between align-items-center" th:each="item:${list}">
+                                                <div class="col-md-2 col-lg-2 col-xl-2">
+<!--                                                    <img th:src="@{${item.getImage()}}" class="img-fluid rounded-3"/>    -->
+                                                    <img th:src="${item.getImagePath}" width="70"/>
+                                                </div>
+                                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                                    <h4 class="text-muted" th:text="${item.getName()}"></h4>                            
+                                                </div>
+                                                <div class="col-md-2 col-lg-2 col-xl-2">                                
+                                                        <div class="d-flex">                                                                                                  
+                                                            <input id="quantity" name="quantity" th:value="${item.getQuantity()}" type="number" readonly="redonly"
+                                                                   class="form-control form-control-sm" />
+                                                       </div>                                                                        
+                                                </div>
+                                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                    <h4 class="mb-0" th:text="${item.getPriceFormat()}"></h4>
+                                                </div>
+                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                    <a class="btn btn-primary btn-sm" th:href="@{/favor/add/{foodid}(foodid=${item.getFoodid()})}"><i class="fas fa-times"></i></a>
+                                                </div>
+                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                    <a class="btn btn-primary btn-sm" th:href="@{/cart/add/{foodid}(foodid=${item.getFoodid()})}"><i class="fa fa-shopping-cart"></i></a>
+                                                </div>
+                                               
+                                                
+                                                <hr class="my-4">
+                                            </div>
+                                            <div class="pt-5">
+                                                <div th:align="left">
+                                                    <a href="/menuSet" class="text-body"><i
+                                                            class="fas fa-long-arrow-alt-left me-2"></i> Back to Set Menu</a>
+                                                    or <a href="/menuOption" class="text-body">  Back to Option Menu</a>        
+                                                </div>
+                                                <div th:align="right">
+                                                    <a class="btn btn-primary btn-sm" href="/favor/clear">Clear List</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+        
+        <!-- footer part start-->
+        <footer th:replace="layout/footer_script::footer"/>
+        <!-- footer part end-->
+        <div th:replace="layout/footer_script::script"/>
+
+    </body>
+
+</html>

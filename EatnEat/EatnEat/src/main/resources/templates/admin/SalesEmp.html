@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    class="light-style layout-menu-fixed"
+    dir="ltr"
+    data-theme="theme-default"
+    data-assets-path="../assets/"
+    data-template="vertical-menu-template-free" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="admin/admin_layout/head_aside::admin_head"></head>
+
+    <body>
+        <!-- Layout wrapper -->
+        <div class="layout-wrapper layout-content-navbar">
+            <div class="layout-container">
+                <!-- Menu -->
+
+                <aside th:replace="admin/admin_layout/head_aside::admin_aside"></aside>
+                <!-- / Menu -->
+
+                <!-- Layout container -->
+                <div class="layout-page">
+                    <!-- Navbar -->
+
+                    <nav th:replace="admin/admin_layout/nav_footer::admin_nav"></nav>
+
+                    <!-- / Navbar -->
+
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                        <!-- Content -->
+
+                        <!-- Content -->
+
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            <h2 class="fw-bold py-3 mb-4 text-center"><span class="text-muted fw-light" th:text="${title}"></span></h4>                                           
+                                <div class="row ">  
+                                    <div class="col-md-4"><h5>Total Orders :<span th:text="${TotalOrder}"/></h5><h5>Total Amount :<span th:text="${TotalAmount}+' VND'"/><h5> </div>                                                                     
+                                </div>
+                                <div class="card">               
+                                    <div class="table-responsive text-nowrap">
+                                        <table class="table">
+                                            <thead>                                           		
+                                                <tr>                                                          
+                                                    <th>Order ID</th> 
+                                                    <th>Employee Name</th>
+                                                    <th>Food</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total Amount</th>
+                                                    <th>Order Date</th>                                                                                      
+                                                    <th>Order Detail</th>
+
+                                                </tr>                                       
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <tr th:each="e:${LIST}">                                                               
+                                                    <td th:text="${e.getOrderid()}"></td>
+                                                    <td th:text="${e.getEmpid().getEmpname()}"></td>  
+                                                    <td >
+                                                        <div th:each="f:${e.getOrderdetailList()}">
+                                                            <span th:text="${f.getQuantity()}+' '+${f.getFoodid().getFoodname()}"/>
+                                                        </div>
+                                                        
+                                                    </td>
+                                                    <td th:text="${e.getQuantity()}"></td>  
+                                                    <td th:text="${e.getPriceFormat()}"></td>  
+                                                    <td th:text="${e.getOrderdate()}"></td>                                                                                                 
+                                                    <td><a th:href="@{/admin-order/{orderid}(orderid=${e.getOrderid()})}">View</a></td>
+
+                                                </tr>                 
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                                <!--/ Horizontal -->
+                                <!--/ Card layout -->
+                        </div>
+                        <!-- / Content -->
+
+                        <!-- Footer -->
+                        <footer th:replace="admin/admin_layout/nav_footer::admin_footer"></footer>
+                        <!-- / Footer -->
+
+                        <div class="content-backdrop fade"></div>
+                    </div>
+                    <!-- Content wrapper -->
+                </div>
+                <!-- / Layout page -->
+            </div>
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+        </div>
+        <!-- / Layout wrapper -->
+
+        <div th:replace="admin/admin_layout/script::script"></div>
+
+    </body>
+</html>

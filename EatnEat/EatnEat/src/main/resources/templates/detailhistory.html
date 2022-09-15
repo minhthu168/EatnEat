@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>detail-history</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis/libs/jquery/3.3.1/query.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>   
+    </head>
+    <body>
+        <div th:align="center">
+            <h1>OrderDetail History</h1>
+             <table class="table table-striped">
+                <tr>
+                    <th>Food</th>
+                    <th>Price</th>
+                    <th>Quantity</th> 
+                    <th>Subtotal</th>   
+                </tr>
+                <tr th:each="e:${DETAIL}">
+                    <td th:text="${e.foodid.getFoodname}"></td>    
+                    <td th:text="${e.getPrice()}"></td>  
+                    <td th:text="${e.getQuantity()}"></td>      
+                    <td th:text="${e.getTotalamount()}"></td>  
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

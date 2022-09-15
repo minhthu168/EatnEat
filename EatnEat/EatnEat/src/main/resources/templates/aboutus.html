@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/head_header::head"></head>
+<body>
+    <header th:replace="layout/head_header::header"></header>
+<br/><br/><br/><br/>
+  <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner text-center">
+            <div class="breadcrumb_iner_item">
+              <h2>About Us</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-success">About Eat & Eat</h2>
+                <p>Lunch is as delicious as COOKER with full of nutrients. Everything from ingredients, 
+                    spices to packaging is taken care of by the Kitchen. We always:</p>
+                <ol>
+                    <li>Use environmentally friendly paper boxes</li>
+                    <li>All dishes are used water through a quality filter</li>
+                    <li>Always prioritize natural and 'homemade' ingredients</li>
+                    <li>Verified origin</li>
+                    <li>Absolutely no chemicals or colorants</li>
+                    <li>Compliance with food hygiene and safety</li>
+                </ol>
+                <style>
+                    li{
+                        padding: 5px;
+                    }
+                </style>
+            </div>
+            <div class="col-md-6">
+                <img src="../template/img/about1.PNG" height="400" style="border-radius: 15px"/>
+            </div>
+        </div>        
+        <div class="row" style="padding-top:30%;">
+            
+            <div class="col-md-6">
+                <img src="../template/img/about2.PNG" style="border-radius: 15px"/>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-success">Vision, mission, core values</h2>
+                <p><b>Vision: </b>To become the leading office lunch supplier in the city. Ho Chi Minh.</p>
+                <p><b>Mission: </b>Improve the quality of food, the quality of life of Vietnamese people.</p>
+                <p><b>Core values: </b>With the motto "DELICIOUS - CLEAN - SAFETY QUALITY"</p>
+                <br/>
+                <p>GOOD is the most important factor that we bring to our customers.</p>
+                <ol>
+                    <li>Chefs with many years of culinary experience, we bring DELICIOUS rice dishes to suit your taste and the BEST services to our customers.</li>
+                    <li>CLEAN: All dishes use water from a quality water purifier. We always prioritize natural and 'homemade' ingredients with clear origins</li>
+                    <li>SAFETY QUALITY: The kitchen uses environmentally friendly paper boxes. We are committed to absolutely no chemicals, colorants, no abuse of MSG and compliance with food hygiene and safety.</li>                    
+                </ol>
+            </div>
+        </div>
+
+      </div>     
+    </div>
+    
+  </section>
+  <!-- ================ contact section end ================= -->
+
+ <!-- footer part start-->
+    <footer th:replace="layout/footer_script::footer"/>
+    <!-- footer part end-->
+    <div th:replace="layout/footer_script::script"/>
+</body>
+
+</html>

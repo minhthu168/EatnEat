@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    class="light-style layout-menu-fixed"
+    dir="ltr"
+    data-theme="theme-default"
+    data-assets-path="../assets/"
+    data-template="vertical-menu-template-free" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="admin/admin_layout/head_aside::admin_head"></head>
+
+    <body>
+        <!-- Layout wrapper -->
+        <div class="layout-wrapper layout-content-navbar">
+            <div class="layout-container">
+                <!-- Menu -->
+
+                <aside th:replace="admin/admin_layout/head_aside::admin_aside"></aside>
+                <!-- / Menu -->
+
+                <!-- Layout container -->
+                <div class="layout-page">
+                    <!-- Navbar -->
+
+                    <nav th:replace="admin/admin_layout/nav_footer::admin_nav"></nav>
+
+                    <!-- / Navbar -->
+
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                        <!-- Content -->
+
+                        <!-- Content -->
+
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            <h2 class="fw-bold py-3 mb-4 text-center"><span class="text-muted fw-light" th:text="${title}"></span></h4>
+                                <div class="row mb-4 offset-2">  
+                                    <div class="col-md-4">
+                                        <button
+                                            type="button"
+                                            class="btn btn-primary btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalCenter"
+                                            >
+                                            Add new
+                                        </button><span style="padding: 30px;"> or </span><a  th:href="@{../admin/importEmployee}" class="btn btn-primary btn-sm">Import to Excel file</a></h4><br/>
+                                        <!-- Modal -->
+                                        <br/>
+                                        <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <form th:action="@{../admin/createEmployee}" method="Post" th:object="${emp}" onsubmit = "return validateForm()">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalCenterTitle">Create new Company</h5>
+                                                            <button
+                                                                type="button"
+                                                                class="btn-close"
+                                                                data-bs-dismiss="modal"
+                                                                aria-label="Close"
+                                                                ></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <label for="nameWithTitle" class="form-label">Employee ID:</label>
+                                                                    <input type="text" id="id" th:field="*{empid}" class="form-control"/>
+                                                                    <label for="nameWithTitle" class="form-label">Employee Name:</label>
+                                                                    <input type="text" id="name" th:field="*{empname}" class="form-control"/>
+                                                                    <label for="exampleFormControlSelect1" class="form-label">Company</label>
+                                                                    
+                                                                    <label for="nameWithTitle" class="form-label">Phone:</label>
+                                                                    <input type="text" id="name" th:field="*{phone}" class="form-control"/>
+                                                                    <label for="nameWithTitle" class="form-label">Email:</label>
+                                                                    <input type="text" id="name" th:field="*{email}" class="form-control"/>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <input type="submit" class="btn btn-primary" value="Save"/>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="col-md-8">
+                                        <form th:action="@{../admin/searchEmployee}" method="GET">
+                                            <table>
+                                                <tr>                                                    
+                                                    <td><input type="text"  name="name" class="form-control" placeholder="Enter employee name"/></td>
+
+                                                    <td><input type="submit" class="btn btn-info"value="Search"/></td>
+                                                </tr>
+                                            </table>
+
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <form action="../admin/InactiveEmp" method="get">
+                                    <div style="margin: 20px;" >
+                                        <input type="submit" value="Inactive" class="btn btn-warning"/>
+                                    </div>
+                                    <div class="card">               
+                                        <div class="table-responsive text-nowrap">
+
+                                            <table class="table">
+                                                <thead>                                           		
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Employee ID</th>
+                                                        <th>Employee Name</th>
+                                                       
+                                                        <th>Phone number</th>
+                                                        <th>Email</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>                                       
+                                                </thead>
+                                                <tbody class="table-border-bottom-0">
+                                                    <tr th:each="emp: ${list}">
+                                                        <td><input type="checkbox" th:value="${emp.getEmpid()}" name="check"/></td>
+                                                        <td th:text="${emp.getEmpid()}"/>
+                                                        <td th:text="${emp.getEmpname()}"/>
+                                                         
+                                                        <td th:text="${emp.getPhone()}"/>
+                                                        <td th:text="${emp.getEmail()}"></td>
+                                                        <td><span class="text-success" th:text="${emp.getStatus()}"/></td>
+                                                        <td>
+                                                            <a class="btn btn-info " th:href="@{../updateEmployee/}+${emp.getEmpid()}">Edit</a></td>
+                                                    </tr>                   
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--/ Horizontal -->
+                                <!--/ Card layout -->
+                        </div>
+                        <!-- / Content -->
+
+                        <!-- Footer -->
+                        <footer th:replace="admin/admin_layout/nav_footer::admin_footer"></footer>
+                        <!-- / Footer -->
+
+                        <div class="content-backdrop fade"></div>
+                    </div>
+                    <!-- Content wrapper -->
+                </div>
+                <!-- / Layout page -->
+            </div>
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+        </div>
+        <!-- / Layout wrapper -->
+
+        <div th:replace="admin/admin_layout/script::script"></div>
+    </body>
+</html>

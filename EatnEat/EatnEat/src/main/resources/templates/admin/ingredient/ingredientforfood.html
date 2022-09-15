@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    class="light-style layout-menu-fixed"
+    dir="ltr"
+    data-theme="theme-default"
+    data-assets-path="../assets/"
+    data-template="vertical-menu-template-free" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="admin/admin_layout/head_aside::admin_head"></head>
+
+    <body>
+        <!-- Layout wrapper -->
+        <div class="layout-wrapper layout-content-navbar">
+            <div class="layout-container">
+                <!-- Menu -->
+
+                <aside th:replace="admin/admin_layout/head_aside::admin_aside"></aside>
+                <!-- / Menu -->
+
+                <!-- Layout container -->
+                <div class="layout-page">
+                    <!-- Navbar -->
+
+                   <nav th:replace="admin/admin_layout/nav_footer::admin_nav"></nav>
+
+                    <!-- / Navbar -->
+
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                        <!-- Content -->
+
+                        <!-- Content -->
+
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            <h4 class="fw-bold py-3 mb-4 offset-2"><span class="text-muted fw-light" th:text="${title}"></span></h4>                           
+                            <div class="card col-md-6 offset-2" style="padding: 10px;">               
+                                <div class="text-nowrap">
+                                    <h4 >Ingredient</h4>
+                                        <table class="table table-hover table-borderless">
+                                            <tr th:each="item : ${listReceipe}">
+                                                <td  th:text="${item.getIngredientid().getName()}" />	
+                                                <td  th:text="${item.getQuantityFormat}+'  '+${item.getUnit()}" />
+                                                
+                                            </tr>                 
+                                        </table>
+                                   
+                                  <br/><br/><br/><br/>
+                                </div>
+                            </div> 
+                                                 
+                            <!--/ Horizontal -->
+                            <!--/ Card layout -->
+                        </div>
+                        <!-- / Content -->
+
+                        <!-- Footer -->
+                        <footer th:replace="admin/admin_layout/nav_footer::admin_footer"></footer>
+                        <!-- / Footer -->
+
+                        <div class="content-backdrop fade"></div>
+                    </div>
+                    <!-- Content wrapper -->
+                </div>
+                <!-- / Layout page -->
+            </div>
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+        </div>
+        <!-- / Layout wrapper -->
+
+              <div th:replace="admin/admin_layout/script::script"></div>
+
+    </body>
+</html>
